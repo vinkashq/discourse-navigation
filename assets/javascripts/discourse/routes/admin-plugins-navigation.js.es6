@@ -1,4 +1,4 @@
-import MenuLink from 'discourse/plugins/navigation/admin/models/menu-link';
+import MenuLink from 'discourse/plugins/navigation/models/menu-link';
 
 export default Discourse.Route.extend({
 
