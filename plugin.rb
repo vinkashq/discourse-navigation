@@ -82,8 +82,8 @@ after_initialize do
   end
 
   Navigation::Engine.routes.draw do
-    get "/" => "menulinks#index"
-    post "/" => "menulinks#create"
+    get "/menu_links" => "menulinks#index"
+    post "/menu_links" => "menulinks#create"
   end
 
   Discourse::Application.routes.append do
