@@ -81,14 +81,14 @@ after_initialize do
 
   end
 
-end
+  Navigation::Engine.routes.draw do
+    get "/" => "menulinks#index"
+    post "/" => "menulinks#create"
+  end
 
-Navigation::Engine.routes.draw do
-  get "/" => "menulinks#index"
-  post "/" => "menulinks#create"
-end
+  Discourse::Application.routes.append do
+    get '/admin/plugins/navigation' => 'admin/plugins#index', constraints: StaffConstraint.new
+    mount ::Navigation::Engine, at: "/navigation", constraints: StaffConstraint.new
+  end
 
-Discourse::Application.routes.append do
-  get '/admin/plugins/navigation' => 'admin/plugins#index', constraints: StaffConstraint.new
-  mount ::Navigation::Engine, at: "/navigation", constraints: StaffConstraint.new
 end
