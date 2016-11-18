@@ -14,8 +14,25 @@ export default Ember.Controller.extend({
 
   actions: {
     createMenu() {
-      const m = this.store.createRecord('menu-link', { position: MAX_FIELDS });
+      const m = this.store.createRecord('menu-link', { position: 0 });
       this.get('model').pushObject(m);
+    },
+
+    destroy(f) {
+      const model = this.get('model');
+
+      // Only confirm if we already been saved
+      if (f.get('id')) {
+        bootbox.confirm(I18n.t("admin.user_fields.delete_confirm"), function(result) {
+          if (result) {
+            f.destroyRecord().then(function() {
+              model.removeObject(f);
+            }).catch(popupAjaxError);
+          }
+        });
+      } else {
+        model.removeObject(f);
+      }
     }
   }
 
