@@ -1,5 +1,7 @@
 en:
   js:
+    navigation:
+      title: "Navigation"
     menu_items:
       title: "Menu Items"
       add: "Add Menu Item"
