@@ -21,7 +21,7 @@ after_initialize do
   class Navigation::MenuLink
     class << self
 
-      def add(user_id, name, url)
+      def add(user_id, name, url, show_on)
         ensureAdmin user_id
 
         # TODO add i18n string
@@ -29,7 +29,7 @@ after_initialize do
         raise StandardError.new "menu_links.missing_url" if url.blank?
 
         id = SecureRandom.hex(16)
-        record = {id: id, name: name, url: url}
+        record = {id: id, name: name, url: url, show_on: show_on}
 
         menu_links = PluginStore.get(PLUGIN_NAME, STORE_NAME)
         menu_links = Hash.new if menu_links == nil
@@ -57,7 +57,7 @@ after_initialize do
         user = User.find_by(id: user_id)
 
         unless user.try(:admin?)
-          raise StandardError.new "menu_links.must_be_staff"
+          raise StandardError.new "menu_links.must_be_admin"
         end
       end
 
@@ -73,10 +73,12 @@ after_initialize do
       field_params = params.require(:menu_link)
       name   = field_params[:name]
       url = field_params[:url]
+      hamburger = {general: field_params[:hamburger_general], footer: field_params[:hamburger_footer]}
+      show_on = {hamburger: hamburger}
       user_id   = current_user.id
 
       begin
-        record = Navigation::MenuLink.add(user_id, name, url)
+        record = Navigation::MenuLink.add(user_id, name, url, show_on)
         render json: record
       rescue StandardError => e
         render_json_error e.message
