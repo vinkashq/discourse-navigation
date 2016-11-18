@@ -46,7 +46,7 @@ after_initialize do
         return [] if menu_links.blank?
 
         menu_links.each do |id, value|
-          replies[id] = value
+          menu_links[id] = value
         end
 
         menu_links
@@ -69,8 +69,9 @@ after_initialize do
     requires_plugin PLUGIN_NAME
 
     def create
-      name   = params.require(:name)
-      url = params.require(:url)
+      field_params = params.require(:menu_link)
+      name   = field_params[:name]
+      url = field_params[:url]
       user_id   = current_user.id
 
       begin
