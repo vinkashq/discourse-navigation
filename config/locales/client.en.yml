@@ -2,6 +2,6 @@ en:
   js:
     navigation:
       title: "Navigation"
-    menu_items:
-      title: "Menu Items"
-      add: "Add Menu Item"
+    menu_links:
+      title: "Menu Links"
+      new: "New Menu Link"

@@ -1,9 +1,9 @@
-import MenuLink from 'discourse/plugins/navigation/models/menu-link';
+import MenuLink from 'discourse/plugins/navigation/discourse/models/menu-link';
 
 export default Discourse.Route.extend({
 
   model() {
-    return this.store.find('menu-link');
+    return this.store.findAll('menu-link');
   }
 
 });

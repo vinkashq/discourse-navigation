@@ -43,7 +43,7 @@ after_initialize do
       def all
         menu_links = PluginStore.get(PLUGIN_NAME, STORE_NAME)
 
-        return {} if menu_links.blank?
+        return [] if menu_links.blank?
 
         menu_links.each do |id, value|
           replies[id] = value

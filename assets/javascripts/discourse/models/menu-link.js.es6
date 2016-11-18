@@ -1,7 +1,5 @@
 import RestModel from 'discourse/models/rest';
 
-const MenuLink = RestModel.extend({
-  content_type: 1
-});
+const MenuLink = RestModel.extend();
 
 export default MenuLink;
