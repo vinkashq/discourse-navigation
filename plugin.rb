@@ -55,7 +55,7 @@ after_initialize do
 
   require_dependency "application_controller"
 
-  class Navigation::MenuLinksController < ::ApplicationController
+  class Navigation::MenulinksController < ::ApplicationController
     requires_plugin PLUGIN_NAME
 
     def create
