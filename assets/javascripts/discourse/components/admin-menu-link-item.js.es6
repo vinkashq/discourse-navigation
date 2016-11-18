@@ -30,4 +30,5 @@ export default Ember.Component.extend(bufferedProperty('menuLink'), {
         this.set('editing', false);
       }
     }
+  }
 });
