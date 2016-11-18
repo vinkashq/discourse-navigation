@@ -41,12 +41,13 @@ after_initialize do
       end
 
       def all
-        menu_links = PluginStore.get(PLUGIN_NAME, STORE_NAME)
+        menu_links = Array.new
+        result = PluginStore.get(PLUGIN_NAME, STORE_NAME)
 
-        return [] if menu_links.blank?
+        return menu_links if result.blank?
 
-        menu_links.each do |id, value|
-          menu_links[id] = value
+        result.each do |id, value|
+          menu_links.push(value)
         end
 
         menu_links
