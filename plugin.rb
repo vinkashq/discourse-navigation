@@ -21,7 +21,9 @@ after_initialize do
   class Navigation::MenuLink
     class << self
 
-      def add(name, url)
+      def add(user_id, name, url)
+        ensureAdmin user_id
+
         # TODO add i18n string
         raise StandardError.new "menu_links.missing_name" if name.blank?
         raise StandardError.new "menu_links.missing_url" if url.blank?
@@ -50,6 +52,14 @@ after_initialize do
         menu_links
       end
 
+      def ensureAdmin (user_id)
+        user = User.find_by(id: user_id)
+
+        unless user.try(:admin?)
+          raise StandardError.new "menu_links.must_be_staff"
+        end
+      end
+
     end
   end
 
@@ -61,9 +71,10 @@ after_initialize do
     def create
       name   = params.require(:name)
       url = params.require(:url)
+      user_id   = current_user.id
 
       begin
-        record = Navigation::MenuLink.add(name, url)
+        record = Navigation::MenuLink.add(user_id, name, url)
         render json: record
       rescue StandardError => e
         render_json_error e.message
@@ -88,7 +99,7 @@ after_initialize do
 
   Discourse::Application.routes.append do
     get '/admin/plugins/navigation' => 'admin/plugins#index', constraints: StaffConstraint.new
-    mount ::Navigation::Engine, at: "/navigation", constraints: StaffConstraint.new
+    mount ::Navigation::Engine, at: "/"
   end
 
 end
