@@ -6,7 +6,7 @@
   <br>
   {{#if model}}
     {{#each arrangedContent as |ml|}}
-      {{admin-user-field-item menuLink=ml
+      {{admin-menu-link-item menuLink=ml
                               firstField=arrangedContent.firstObject
                               lastField=arrangedContent.lastObject
                               destroyAction="destroy"}}
