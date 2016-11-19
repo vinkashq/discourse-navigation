@@ -2,8 +2,9 @@
   <div class='buttons pull-right'>
     {{d-button label="admin.menu_links.new" action="createMenu" icon="plus" class="btn-primary"}}
   </div>
-  <h3>{{i18n 'admin.menu_links.title'}}</h3>
+  <h2>{{i18n 'admin.menu_links.title'}}</h2>
   <br>
+  <hr>
   {{#if model}}
     {{#each arrangedContent as |ml|}}
       {{admin-menu-link-item menuLink=ml

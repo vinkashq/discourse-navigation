@@ -7,12 +7,14 @@
     {{input value=buffered.url class="menu-link-url"}}
   {{/admin-form-row}}
 
-  {{#admin-form-row wrapLabel="true"}}
-    {{input type="checkbox" checked=buffered.hamburger_general}} {{i18n 'admin.menu_links.hamburger.general'}}
-  {{/admin-form-row}}
+  {{#admin-form-row label="admin.menu_links.hamburger"}}
+    {{#admin-form-row wrapLabel="true"}}
+      {{input type="checkbox" checked=buffered.hamburger_general}} {{i18n 'admin.menu_links.hamburger.general'}}
+    {{/admin-form-row}}
 
-  {{#admin-form-row wrapLabel="true"}}
-    {{input type="checkbox" checked=buffered.hamburger_footer}} {{i18n 'admin.menu_links.hamburger.footer'}}
+    {{#admin-form-row wrapLabel="true"}}
+      {{input type="checkbox" checked=buffered.hamburger_footer}} {{i18n 'admin.menu_links.hamburger.footer'}}
+    {{/admin-form-row}}
   {{/admin-form-row}}
 
   {{#admin-form-row}}

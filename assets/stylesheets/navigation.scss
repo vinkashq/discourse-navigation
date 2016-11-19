@@ -20,6 +20,11 @@
 .menu-links .menu-link .form-element.label-area {
     width: 25%;
 }
+.menu-links .menu-link .form-element.label-area label {
+    margin: 0.5em 1em 0 0;
+    text-align: right;
+    font-weight: bold;
+}
 .menu-links .menu-link .form-element.input-area {
     width: 75%;
 }
