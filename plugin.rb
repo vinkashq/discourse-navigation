@@ -159,8 +159,7 @@ after_initialize do
       if position.nil?
         name   = field_params[:name]
         url = field_params[:url]
-        hamburger = {general: field_params[:hamburger_general], footer: field_params[:hamburger_footer]}
-        visible = {hamburger: hamburger}
+        visible = field_params[:visible]
 
         begin
           record = Navigation::MenuLink.edit(user_id, id, name, url, visible)
