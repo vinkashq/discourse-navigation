@@ -27,12 +27,15 @@ after_initialize do
         mainLinks = ""
         result = PluginStore.get(PLUGIN_NAME, STORE_NAME)
 
-        return menu_links if result.blank?
+        return mainLinks if result.blank?
 
         result.each do |id, value|
           unless value['visible'].nil?
-            if value['visible']['main']?
-              mainLinks = "<li id='communities-menu-item'><a href='/communities'>Communities</a></li>"
+            visible = value['visible']
+            unless visible['main'].nil?
+              if visible['main']
+                mainLinks = "<li id='communities-menu-item'><a href='/communities'>Communities</a></li>"
+              end
             end
           end
         end
