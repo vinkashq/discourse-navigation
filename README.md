@@ -9,10 +9,10 @@ Plugin to add a custom nav menu links to your Discourse website.
 
 List of currently available locations where the custom menu links can be added.
 
-* Top Main Menu
+* Top Main Menu ([_known issue_][issue-4])
 * Hamburger Menu
  * General Links
- * Footer Links
+ * Footer Links ([_known issue_][issue-3])
 
 
 ### Installation
@@ -41,3 +41,8 @@ And then rebuild the container:
 ### Configuration
 
 You can easily add your custom menu links in `/admin/plugins/navigation` path.
+
+
+
+[issue-3]: https://github.com/vinkas0/discourse-navigation/issues/3
+[issue-4]: https://github.com/vinkas0/discourse-navigation/issues/4
