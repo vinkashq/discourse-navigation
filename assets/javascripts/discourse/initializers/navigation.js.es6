@@ -2,28 +2,37 @@ import { withPluginApi } from 'discourse/lib/plugin-api';
 
 export default {
   name: 'navigation',
+  links: [],
 
   initialize(container) {
+    var self = this;
     withPluginApi('0.4', api => {
-      const store = container.lookup('store:main');
-      store.findAll('menu-link').then(function(rs) {
-        var links = [];
-        rs.content.forEach(function(l) {
-          links.push({ href: l.url, rawLabel: l.name })
+        Discourse.MenuItem = Discourse.NavItem.extend({
+          href : function() {
+            return this.get('href');
+          }.property('href'),
+displayName : function() {
+  return this.get('name');
+}.property('name')
         });
         Discourse.NavItem.reopenClass({
           buildList : function(category, args) {
             var list = this._super(category, args);
 
-            links.forEach(function(l) {
-              list.push(Discourse.MenuItem.create({href: l.url, name: l.name}));
+            self.links.forEach(function(l) {
+              list.push(Discourse.MenuItem.create({ href: l.url, name: l.rawLabel} ));
             });
 
             return list;
           }
         });
         api.decorateWidget("hamburger-menu:generalLinks", () => {
-          return links;
+          return self.links;
+        });
+      const store = container.lookup('store:main');
+      store.findAll('menu-link').then(function(rs) {
+        rs.content.forEach(function(l) {
+          self.links.push({ href: l.url, rawLabel: l.name });
         });
       });
     });

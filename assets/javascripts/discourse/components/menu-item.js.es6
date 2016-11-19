@@ -1,5 +1,5 @@
 
-export default Discourse.NavItem.extend({
+Discourse.MenuItem = Discourse.NavItem.extend({
   href : function() {
     return this.get('href');
   }.property('href'),
@@ -8,3 +8,5 @@ export default Discourse.NavItem.extend({
     return this.get('name');
   }.property('name')
 });
+
+export default Discourse.MenuItem;
