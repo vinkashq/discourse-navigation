@@ -138,7 +138,6 @@ after_initialize do
     end
 
     def remove
-      field_params = params.require(:menu_link)
       id = params.require(:id)
       user_id  = current_user.id
 
@@ -152,9 +151,9 @@ after_initialize do
 
     def update
       id = params.require(:id)
-      position = params[:position]
+      field_params = params.require(:menu_link)
+      position = field_params[:position]
       if position.nil?
-        field_params = params.require(:menu_link)
         name   = field_params[:name]
         url = field_params[:url]
         hamburger = {general: field_params[:hamburger_general], footer: field_params[:hamburger_footer]}
