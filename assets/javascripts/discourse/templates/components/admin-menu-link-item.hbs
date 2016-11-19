@@ -38,6 +38,8 @@
     <div class='form-element controls'>
       {{d-button action="edit" class="btn-default" icon="pencil" label="admin.menu_links.edit"}}
       {{d-button action="destroy" class="btn-danger" icon="trash-o" label="admin.menu_links.delete"}}
+      {{d-button action="moveUp" icon="arrow-up" disabled=cantMoveUp}}
+      {{d-button action="moveDown" icon="arrow-down" disabled=cantMoveDown}}
     </div>
   </div>
 {{/if}}

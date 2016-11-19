@@ -18,6 +18,28 @@ export default Ember.Controller.extend({
       this.get('model').pushObject(m);
     },
 
+    moveUp(f) {
+      const idx = this.get('arrangedContent').indexOf(f);
+      if (idx) {
+        const prev = this.get('arrangedContent').objectAt(idx-1);
+        const prevPos = prev.get('position');
+
+        prev.update({ position: f.get('position') });
+        f.update({ position: prevPos });
+      }
+    },
+
+    moveDown(f) {
+      const idx = this.get('arrangedContent').indexOf(f);
+      if (idx > -1) {
+        const next = this.get('arrangedContent').objectAt(idx+1);
+        const nextPos = next.get('position');
+
+        next.update({ position: f.get('position') });
+        f.update({ position: nextPos });
+      }
+    },
+
     destroy(f) {
       const model = this.get('model');
 

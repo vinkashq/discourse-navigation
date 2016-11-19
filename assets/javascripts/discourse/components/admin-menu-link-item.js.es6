@@ -1,10 +1,14 @@
 import MenuLink from 'discourse/plugins/navigation/discourse/models/menu-link';
 import { bufferedProperty } from 'discourse/mixins/buffered-content';
 import { popupAjaxError } from 'discourse/lib/ajax-error';
+import { propertyEqual } from 'discourse/lib/computed';
 
 export default Ember.Component.extend(bufferedProperty('menuLink'), {
   editing: Ember.computed.empty('menuLink.id'),
   classNameBindings: [':menu-link'],
+
+  cantMoveUp: propertyEqual('menuLink', 'firstField'),
+  cantMoveDown: propertyEqual('menuLink', 'lastField'),
 
   actions: {
     save() {
@@ -19,6 +23,22 @@ export default Ember.Component.extend(bufferedProperty('menuLink'), {
         self.set('editing', false);
         self.commitBuffer();
       }).catch(popupAjaxError);
+    },
+
+    moveUp() {
+      this.sendAction('moveUpAction', this.get('menuLink'));
+    },
+
+    moveDown() {
+      this.sendAction('moveDownAction', this.get('menuLink'));
+    },
+
+    edit() {
+      this.set('editing', true);
+    },
+
+    destroy() {
+      this.sendAction('destroyAction', this.get('menuLink'));
     },
 
     cancel() {
