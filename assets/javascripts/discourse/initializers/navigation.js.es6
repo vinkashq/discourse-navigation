@@ -17,4 +17,4 @@ export default {
   initialize(container) {
     withPluginApi('0.4', api => initialize);
   }
-}
+};
