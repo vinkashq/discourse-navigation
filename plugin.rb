@@ -4,6 +4,8 @@
 # authors: Vinoth Kannan (vinothkannan@vinkas.com)
 # url: https://github.com/vinkas0/discourse-navigation
 
+register_asset 'stylesheets/navigation.scss'
+
 add_admin_route 'admin.navigation.title', 'navigation'
 
 PLUGIN_NAME ||= "navigation".freeze
