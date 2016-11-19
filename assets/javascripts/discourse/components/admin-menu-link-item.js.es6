@@ -24,7 +24,7 @@ export default Ember.Component.extend(bufferedProperty('menuLink'), {
       }
     }
 
-    return ret.join(' &bullet; ');
+    return ret.join(', ');
   }.property('menuLink.visible.main', 'menuLink.visible.hamburger_general', 'menuLink.visible.hamburger_footer'),
 
   actions: {

@@ -16,7 +16,7 @@ export default {
             var list = this._super(category, args);
 
             links.forEach(function(l) {
-              list.push(Discourse.MenuLink.create({href: l.url, name: l.name}));
+              list.push(Discourse.MenuItem.create({href: l.url, name: l.name}));
             });
 
             return list;
