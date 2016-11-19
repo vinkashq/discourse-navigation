@@ -30,8 +30,8 @@ after_initialize do
         return menu_links if result.blank?
 
         result.each do |id, value|
-          unless value.visible.nil?
-            if value.visible.main?
+          unless value['visible'].nil?
+            if value['visible']['main']?
               mainLinks = "<li id='communities-menu-item'><a href='/communities'>Communities</a></li>"
             end
           end
