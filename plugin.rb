@@ -4,7 +4,7 @@
 # authors: Vinoth Kannan (vinothkannan@vinkas.com)
 # url: https://github.com/vinkas0/discourse-navigation
 
-add_admin_route 'navigation.title', 'navigation'
+add_admin_route 'admin.navigation.title', 'navigation'
 
 PLUGIN_NAME ||= "navigation".freeze
 STORE_NAME ||= "menu_links".freeze

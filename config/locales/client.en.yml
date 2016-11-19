@@ -1,7 +1,14 @@
 en:
-  js:
-    navigation:
-      title: "Navigation"
-    menu_links:
-      title: "Menu Links"
-      new: "New Menu Link"
+  admin_js:
+    admin:
+      navigation:
+        title: "Navigation"
+      menu_links:
+        title: "Menu Links"
+        new: "New Menu Link"
+        name: "Name"
+        url: "Url"
+        save: "Save"
+        cancel: "Cancel"
+        edit: "Edit"
+        delete: "Delete"
