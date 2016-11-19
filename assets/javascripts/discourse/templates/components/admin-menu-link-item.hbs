@@ -11,7 +11,7 @@
     {{#admin-form-row label="admin.menu_links.main.menu"}}
       <div class="row">
         <div class="form-element input-area">
-          {{input type="checkbox" checked=buffered.visible.main}}
+          {{input type="checkbox" checked=buffered.visible_main}}
         </div>
       </div>
     {{/admin-form-row}}
@@ -19,13 +19,13 @@
     {{#admin-form-row label="admin.menu_links.hamburger.menu"}}
       <div class="row">
         <div class="form-element input-area">
-          {{input type="checkbox" checked=buffered.visible.hamburger_general}} {{i18n 'admin.menu_links.hamburger.general'}}
+          {{input type="checkbox" checked=buffered.visible_hamburger_general}} {{i18n 'admin.menu_links.hamburger.general'}}
         </div>
       </div>
 
       <div class="row">
         <div class="form-element input-area">
-          {{input type="checkbox" checked=buffered.visible.hamburger_footer}} {{i18n 'admin.menu_links.hamburger.footer'}}
+          {{input type="checkbox" checked=buffered.visible_hamburger_footer}} {{i18n 'admin.menu_links.hamburger.footer'}}
         </div>
       </div>
     {{/admin-form-row}}

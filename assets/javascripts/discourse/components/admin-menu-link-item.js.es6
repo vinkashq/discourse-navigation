@@ -13,19 +13,19 @@ export default Ember.Component.extend(bufferedProperty('menuLink'), {
   flags: function() {
     const ret = [];
     if (this.get('menuLink.visible')) {
-      if (this.get('menuLink.visible.main')) {
+      if (this.get('menuLink.visible_main')) {
         ret.push(I18n.t('admin.menu_links.enabled.main'));
       }
-      if (this.get('menuLink.visible.hamburger_general')) {
+      if (this.get('menuLink.visible_hamburger_general')) {
         ret.push(I18n.t('admin.menu_links.enabled.hamburger.general'));
       }
-      if (this.get('menuLink.visible.hamburger_footer')) {
+      if (this.get('menuLink.visible_hamburger_footer')) {
         ret.push(I18n.t('admin.menu_links.enabled.hamburger.footer'));
       }
     }
 
     return ret.join(', ');
-  }.property('menuLink.visible.main', 'menuLink.visible.hamburger_general', 'menuLink.visible.hamburger_footer'),
+  }.property('menuLink.visible_main', 'menuLink.visible_hamburger_general', 'menuLink.visible_hamburger_footer'),
 
   actions: {
     save() {
@@ -33,7 +33,9 @@ export default Ember.Component.extend(bufferedProperty('menuLink'), {
       const buffered = this.get('buffered');
       const attrs = buffered.getProperties('name',
                                            'url',
-                                           'visible');
+                                           'visible_main',
+                                           'visible_hamburger_general',
+                                           'visible_hamburger_footer');
 
       this.get('menuLink').save(attrs).then(function() {
         self.set('editing', false);
