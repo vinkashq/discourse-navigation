@@ -28,11 +28,13 @@ after_initialize do
         raise StandardError.new "menu_links.missing_name" if name.blank?
         raise StandardError.new "menu_links.missing_url" if url.blank?
 
-        id = SecureRandom.hex(16)
-        record = {id: id, name: name, url: url, visible: visible}
-
         menu_links = PluginStore.get(PLUGIN_NAME, STORE_NAME)
         menu_links = Hash.new if menu_links == nil
+
+        id = SecureRandom.hex(16)
+        record = {id: id, name: name, url: url, visible: visible}
+        max = menu_links.map { |d| d[:position] }.max
+        record['position'] = (max || 0) + 1
 
         menu_links[id] = record
         PluginStore.set(PLUGIN_NAME, STORE_NAME, menu_links)
