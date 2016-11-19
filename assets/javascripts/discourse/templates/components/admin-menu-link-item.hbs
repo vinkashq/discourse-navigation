@@ -7,13 +7,19 @@
     {{input value=buffered.url class="menu-link-url"}}
   {{/admin-form-row}}
 
-  {{#admin-form-row label="admin.menu_links.hamburger"}}
+  {{#admin-form-row label="admin.menu_links.visible"}}
     {{#admin-form-row wrapLabel="true"}}
-      {{input type="checkbox" checked=buffered.hamburger_general}} {{i18n 'admin.menu_links.hamburger.general'}}
+      {{input type="checkbox" checked=buffered.main}} {{i18n 'admin.menu_links.main.menu'}}
     {{/admin-form-row}}
 
-    {{#admin-form-row wrapLabel="true"}}
-      {{input type="checkbox" checked=buffered.hamburger_footer}} {{i18n 'admin.menu_links.hamburger.footer'}}
+    {{#admin-form-row label="admin.menu_links.hamburger.menu"}}
+      {{#admin-form-row}}
+        {{input type="checkbox" checked=buffered.hamburger_general}} {{i18n 'admin.menu_links.hamburger.general'}}
+      {{/admin-form-row}}
+
+      {{#admin-form-row}}
+        {{input type="checkbox" checked=buffered.hamburger_footer}} {{i18n 'admin.menu_links.hamburger.footer'}}
+      {{/admin-form-row}}
     {{/admin-form-row}}
   {{/admin-form-row}}
 
@@ -24,18 +30,10 @@
 {{else}}
   <div class="row">
     <div class='form-display'>
-      <a href="{{menuLink.url}}" target="_blank">{{menuLink.name}}</a>
+      <strong>{{menuLink.name}}</strong>
     </div>
     <div class='form-display'>
-      <strong>Show on :</strong>
-      <ul>
-      {{#if menuLink.show_on.hamburger.general}}
-        <li>Hamburger Menu - General Links</li>
-      {{/if}}
-      {{#if menuLink.show_on.hamburger.footer}}
-        <li>Hamburger Menu - Footer Links</li>
-      {{/if}}
-    </ul>
+      <a href="{{menuLink.url}}" target="_blank">{{menuLink.url}}</a>
     </div>
     <div class='form-element controls'>
       {{d-button action="edit" class="btn-default" icon="pencil" label="admin.menu_links.edit"}}
@@ -44,5 +42,6 @@
       {{d-button action="moveDown" icon="arrow-down" disabled=cantMoveDown}}
     </div>
   </div>
+  <div class="row">{{flags}}</div>
 {{/if}}
 <div class='clearfix'></div>
