@@ -1,4 +1,6 @@
-# [discourse-navigation](https://codiss.com/c/discourse-navigation)
+# [discourse-navigation][codiss-category]
+
+[![Discourse on Codiss][codiss-badge]][codiss-category]
 
 ### About
 
@@ -13,6 +15,11 @@ List of currently available locations where the custom menu links can be added.
 * Hamburger Menu
  * General Links
  * Footer Links ([_known issue_][issue-3])
+
+
+### Screenshot
+
+![][screenshot]
 
 
 ### Installation
@@ -44,5 +51,10 @@ You can easily add your custom menu links in `/admin/plugins/navigation` path.
 
 
 
+[screenshot]: https://codiss.com/uploads/default/optimized/1X/c19632482295e2ea4e88672eb146627f23cf9abe_1_690x328.png
+
 [issue-3]: https://github.com/vinkas0/discourse-navigation/issues/3
 [issue-4]: https://github.com/vinkas0/discourse-navigation/issues/4
+
+[codiss-category]: https://codiss.com/c/discourse-navigation
+[codiss-badge]: https://img.shields.io/badge/discourse-on_Codiss-blue.svg?style=flat-square
