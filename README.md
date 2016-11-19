@@ -16,6 +16,8 @@ List of currently available locations where the custom menu links can be added.
  * General Links
  * Footer Links ([_known issue_][issue-3])
 
+> [PR][issue-3] submitted in official Discourse repo to resolve `Footer Links` issue.
+
 
 ### Screenshot
 
