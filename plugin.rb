@@ -33,7 +33,12 @@ after_initialize do
 
         id = SecureRandom.hex(16)
         record = {id: id, name: name, url: url, visible: visible}
-        max = menu_links.map { |d| d[:position] }.max
+
+        menu_links_array = Array.new
+        menu_links.each do |id, value|
+          menu_links_array.push(value)
+        end
+        max = menu_links_array.map { |d| d[:position] }.max
         record['position'] = (max || 0) + 1
 
         menu_links[id] = record
