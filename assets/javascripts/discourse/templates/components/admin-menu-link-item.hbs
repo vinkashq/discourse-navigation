@@ -8,11 +8,13 @@
   {{/admin-form-row}}
 
   {{#admin-form-row label="admin.menu_links.visible"}}
-    <div class="row">
-      <div class="form-element input-area">
-        {{input type="checkbox" checked=buffered.visible.main}} {{i18n 'admin.menu_links.main.menu'}}
+    {{#admin-form-row label="admin.menu_links.main.menu"}}
+      <div class="row">
+        <div class="form-element input-area">
+          {{input type="checkbox" checked=buffered.visible.main}}
+        </div>
       </div>
-    </div>
+    {{/admin-form-row}}
 
     {{#admin-form-row label="admin.menu_links.hamburger.menu"}}
       <div class="row">

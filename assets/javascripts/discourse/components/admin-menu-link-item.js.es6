@@ -16,13 +16,11 @@ export default Ember.Component.extend(bufferedProperty('menuLink'), {
       if (this.get('menuLink.visible.main')) {
         ret.push(I18n.t('admin.menu_links.enabled.main'));
       }
-      if (this.get('menuLink.visible.hamburger')) {
-        if (this.get('menuLink.visible.hamburger_general')) {
-          ret.push(I18n.t('admin.menu_links.enabled.hamburger.general'));
-        }
-        if (this.get('menuLink.visible.hamburger_footer')) {
-          ret.push(I18n.t('admin.menu_links.enabled.hamburger.footer'));
-        }
+      if (this.get('menuLink.visible.hamburger_general')) {
+        ret.push(I18n.t('admin.menu_links.enabled.hamburger.general'));
+      }
+      if (this.get('menuLink.visible.hamburger_footer')) {
+        ret.push(I18n.t('admin.menu_links.enabled.hamburger.footer'));
       }
     }
 
