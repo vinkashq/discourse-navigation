@@ -1,5 +1,15 @@
-<div class='buttons pull-right'>
-  {{d-button label="menu_links.new" action="newItem" icon="plus"}}
+<div class='menu-links'>
+  <div class='buttons pull-right'>
+    {{d-button label="menu_links.new" action="createMenu" icon="plus" class="btn-primary"}}
+  </div>
+  <h3>{{i18n 'menu_links.title'}}</h3>
+  <br>
+  {{#if model}}
+    {{#each arrangedContent as |ml|}}
+      {{admin-menu-link-item menuLink=ml
+                              firstField=arrangedContent.firstObject
+                              lastField=arrangedContent.lastObject
+                              destroyAction="destroy"}}
+    {{/each}}
+  {{/if}}
 </div>
-<h3>{{i18n 'menu_links.title'}}</h3>
-<br>

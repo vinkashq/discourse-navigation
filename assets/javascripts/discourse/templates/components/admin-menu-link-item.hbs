@@ -1,0 +1,44 @@
+{{#if editing}}
+  {{#admin-form-row label="admin.menu_links.name"}}
+    {{input value=buffered.name class="menu-link-name"}}
+  {{/admin-form-row}}
+
+  {{#admin-form-row label="admin.menu_links.url"}}
+    {{input value=buffered.url class="menu-link-url"}}
+  {{/admin-form-row}}
+
+  {{#admin-form-row wrapLabel="true"}}
+    {{input type="checkbox" checked=buffered.hamburger_general}} {{i18n 'admin.menu_links.hamburger_menu.general'}}
+  {{/admin-form-row}}
+
+  {{#admin-form-row wrapLabel="true"}}
+    {{input type="checkbox" checked=buffered.hamburger_footer}} {{i18n 'admin.menu_links.hamburger_menu.footer'}}
+  {{/admin-form-row}}
+
+  {{#admin-form-row}}
+    {{d-button action="save" class="btn-primary" icon="check" label="admin.menu_links.save"}}
+    {{d-button action="cancel" class="btn-danger" icon="times" label="admin.menu_links.cancel"}}
+  {{/admin-form-row}}
+{{else}}
+  <div class="row">
+    <div class='form-display'>
+      <a href="{{menuLink.url}}" target="_blank">{{menuLink.name}}</a>
+    </div>
+    <div class='form-display'>
+      <strong>Show on :</strong>
+      <ul>
+      {{#if menuLink.show_on.hamburger.general}}
+        <li>Hamburger Menu - General Links</li>
+      {{/if}}
+      {{#if menuLink.show_on.hamburger.footer}}
+        <li>Hamburger Menu - Footer Links</li>
+      {{/if}}
+    </ul>
+    </div>
+    <div class='form-element controls'>
+      {{d-button action="edit" class="btn-default" icon="pencil" label="admin.menu_links.edit"}}
+      {{d-button action="destroy" class="btn-danger" icon="trash-o" label="admin.menu_links.delete"}}
+    </div>
+  </div>
+{{/if}}
+<div class='clearfix'></div>
