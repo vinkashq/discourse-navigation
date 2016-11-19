@@ -21,7 +21,7 @@ after_initialize do
   class Navigation::MenuLink
     class << self
 
-      def add(user_id, name, url, show_on)
+      def add(user_id, name, url, visible)
         ensureAdmin user_id
 
         # TODO add i18n string
@@ -29,7 +29,7 @@ after_initialize do
         raise StandardError.new "menu_links.missing_url" if url.blank?
 
         id = SecureRandom.hex(16)
-        record = {id: id, name: name, url: url, show_on: show_on}
+        record = {id: id, name: name, url: url, visible: visible}
 
         menu_links = PluginStore.get(PLUGIN_NAME, STORE_NAME)
         menu_links = Hash.new if menu_links == nil
@@ -38,6 +38,32 @@ after_initialize do
         PluginStore.set(PLUGIN_NAME, STORE_NAME, menu_links)
 
         record
+      end
+
+      def edit(user_id, id, name, url, visible)
+        ensureAdmin user_id
+
+        raise StandardError.new "menu_links.missing_name" if name.blank?
+        raise StandardError.new "menu_links.missing_url" if url.blank?
+
+        record = {id: id, name: name, url: url, visible: visible}
+        remove(user_id, id)
+
+        menu_links = PluginStore.get(PLUGIN_NAME, STORE_NAME)
+        menu_links = Hash.new if menu_links == nil
+
+        menu_links[id] = record
+        PluginStore.set(PLUGIN_NAME, STORE_NAME, menu_links)
+
+        record
+      end
+
+      def remove(user_id, id)
+        ensureAdmin user_id
+
+        menu_links = PluginStore.get(PLUGIN_NAME, STORE_NAME)
+        menu_links.delete id
+        PluginStore.set(PLUGIN_NAME, STORE_NAME, menu_links)
       end
 
       def all
@@ -74,11 +100,41 @@ after_initialize do
       name   = field_params[:name]
       url = field_params[:url]
       hamburger = {general: field_params[:hamburger_general], footer: field_params[:hamburger_footer]}
-      show_on = {hamburger: hamburger}
+      visible = {hamburger: hamburger}
       user_id   = current_user.id
 
       begin
-        record = Navigation::MenuLink.add(user_id, name, url, show_on)
+        record = Navigation::MenuLink.add(user_id, name, url, visible)
+        render json: record
+      rescue StandardError => e
+        render_json_error e.message
+      end
+    end
+
+    def remove
+      field_params = params.require(:menu_link)
+      id = field_params[:id]
+      user_id  = current_user.id
+
+      begin
+        record = Navigation::MenuLink.remove(user_id, id)
+        render json: record
+      rescue StandardError => e
+        render_json_error e.message
+      end
+    end
+
+    def update
+      field_params = params.require(:menu_link)
+      id = field_params[:id]
+      name   = field_params[:name]
+      url = field_params[:url]
+      hamburger = {general: field_params[:hamburger_general], footer: field_params[:hamburger_footer]}
+      visible = {hamburger: hamburger}
+      user_id  = current_user.id
+
+      begin
+        record = Navigation::MenuLink.edit(user_id, id, name, url, visible)
         render json: record
       rescue StandardError => e
         render_json_error e.message
@@ -99,6 +155,8 @@ after_initialize do
   Navigation::Engine.routes.draw do
     get "/menu_links" => "menulinks#index"
     post "/menu_links" => "menulinks#create"
+    delete "/menu_links" => "menulinks#remove"
+    put "/menu_links" => "menulinks#update"
   end
 
   Discourse::Application.routes.append do
