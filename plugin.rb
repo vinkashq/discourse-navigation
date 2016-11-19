@@ -113,7 +113,7 @@ after_initialize do
 
     def remove
       field_params = params.require(:menu_link)
-      id = field_params[:id]
+      id = params.require(:id)
       user_id  = current_user.id
 
       begin
@@ -126,7 +126,7 @@ after_initialize do
 
     def update
       field_params = params.require(:menu_link)
-      id = field_params[:id]
+      id = params.require(:id)
       name   = field_params[:name]
       url = field_params[:url]
       hamburger = {general: field_params[:hamburger_general], footer: field_params[:hamburger_footer]}
@@ -155,8 +155,8 @@ after_initialize do
   Navigation::Engine.routes.draw do
     get "/menu_links" => "menulinks#index"
     post "/menu_links" => "menulinks#create"
-    delete "/menu_links" => "menulinks#remove"
-    put "/menu_links" => "menulinks#update"
+    delete "/menu_links/:id" => "menulinks#remove"
+    put "/menu_links/:id" => "menulinks#update"
   end
 
   Discourse::Application.routes.append do
