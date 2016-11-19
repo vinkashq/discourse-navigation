@@ -1,4 +1,5 @@
 import MenuLink from 'discourse/plugins/navigation/discourse/models/menu-link';
+import { popupAjaxError } from 'discourse/lib/ajax-error';
 
 const MAX_FIELDS = 100;
 

@@ -17,17 +17,17 @@ export default Ember.Component.extend(bufferedProperty('menuLink'), {
         ret.push(I18n.t('admin.menu_links.enabled.main'));
       }
       if (this.get('menuLink.visible.hamburger')) {
-        if (this.get('menuLink.visible.hamburger.general')) {
+        if (this.get('menuLink.visible.hamburger_general')) {
           ret.push(I18n.t('admin.menu_links.enabled.hamburger.general'));
         }
-        if (this.get('menuLink.visible.hamburger.general')) {
+        if (this.get('menuLink.visible.hamburger_footer')) {
           ret.push(I18n.t('admin.menu_links.enabled.hamburger.footer'));
         }
       }
     }
 
     return ret.join(', ');
-  }.property('menuLink.visible.main', 'menuLink.visible.hamburger.general', 'menuLink.visible.hamburger.footer'),
+  }.property('menuLink.visible.main', 'menuLink.visible.hamburger_general', 'menuLink.visible.hamburger_footer'),
 
   actions: {
     save() {
