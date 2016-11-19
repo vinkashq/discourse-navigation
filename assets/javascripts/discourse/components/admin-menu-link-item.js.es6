@@ -33,16 +33,14 @@ export default Ember.Component.extend(bufferedProperty('menuLink'), {
     save() {
       const self = this;
       const buffered = this.get('buffered');
-      const attrs = buffered.getProperties('name',
-                                           'url');
+      var attrs = buffered.getProperties('name',
+                                         'url');
 
-      const visible = buffered.getProperties('main');
+      var visible = buffered.getProperties('main',
+                                           'hamburger_general',
+                                           'hamburger_footer');
 
-      const hamburger = buffered.getProperties('hamburger_general',
-                                               'hamburger_footer');
-
-      visible.push(hamburger);
-      attrs.push(visible);
+      attrs['visible'] = visible;
 
       this.get('menuLink').save(attrs).then(function() {
         self.set('editing', false);

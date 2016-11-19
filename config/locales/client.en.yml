@@ -14,6 +14,11 @@ en:
         delete: "Delete"
         delete_confirm: "Are you sure you want to delete that menu link?"
         visible: "Visible"
+        enabled:
+          main: "Main"
+          hamburger:
+            general: "Hamburger general"
+            footer: "Hamburger footer"
         main:
           menu: "Main menu"
         hamburger:
