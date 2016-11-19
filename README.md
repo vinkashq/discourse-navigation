@@ -19,9 +19,10 @@ List of currently available locations where the custom menu links can be added.
 > [PR][issue-3] submitted in official Discourse repo to resolve `Footer Links` issue.
 
 
-### Screenshot
+### Screenshots
 
-![][screenshot]
+![admin][screenshot-1]
+![discourse][screenshot-2]
 
 
 ### Installation
@@ -53,7 +54,8 @@ You can easily add your custom menu links in `/admin/plugins/navigation` path.
 
 
 
-[screenshot]: https://codiss.com/uploads/default/optimized/1X/c19632482295e2ea4e88672eb146627f23cf9abe_1_690x328.png
+[screenshot-1]: https://cdn.codiss.com/original/1X/ab4a0cd4333f845d553e07d3d3458d7ec7e2647f.png
+[screenshot-2]: https://cdn.codiss.com/original/1X/7b6fa85e96154a4dec9de767403f83e9d91c12d3.png
 
 [issue-3]: https://github.com/vinkas0/discourse-navigation/issues/3
 [issue-4]: https://github.com/vinkas0/discourse-navigation/issues/4
