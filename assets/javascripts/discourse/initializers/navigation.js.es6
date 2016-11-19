@@ -19,7 +19,8 @@ export default {
         rs.content.forEach(function(l) {
           if(l.visible_hamburger_general) {
             self.hamburger_general.push({ href: l.url, rawLabel: l.name });
-          } else if (l.visible_hamburger_footer) {
+          }
+          if (l.visible_hamburger_footer) {
             self.hamburger_footer.push({ href: l.url, rawLabel: l.name });
           }
         });
