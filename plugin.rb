@@ -23,6 +23,23 @@ after_initialize do
   class Navigation::MenuLink
     class << self
 
+      def main
+        mainLinks = ""
+        result = PluginStore.get(PLUGIN_NAME, STORE_NAME)
+
+        return menu_links if result.blank?
+
+        result.each do |id, value|
+          unless value.visible.nil?
+            if value.visible.main?
+              mainLinks = "<li id='communities-menu-item'><a href='/communities'>Communities</a></li>"
+            end
+          end
+        end
+
+        mainLinks
+      end
+
       def add(user_id, name, url, visible)
         ensureAdmin user_id
 
@@ -117,6 +134,8 @@ after_initialize do
 
     end
   end
+
+  register_custom_html extraNavItem: Navigation::MenuLink.main
 
   require_dependency "application_controller"
 
