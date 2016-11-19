@@ -24,23 +24,24 @@ after_initialize do
     class << self
 
       def main
-        mainLinks = ""
+        mainLinks = Array.new
         result = PluginStore.get(PLUGIN_NAME, STORE_NAME)
 
-        return mainLinks if result.blank?
+        return "" if result.blank?
 
         result.each do |id, value|
           unless value['visible'].nil?
             visible = value['visible']
             unless visible['main'].nil?
               if visible['main']
-                mainLinks = "<li id='communities-menu-item'><a href='/communities'>Communities</a></li>"
+                link = ['<li><a href="', value['url'], '">', value['name'], "</a></li>"].join("")
+                mainLinks.push(link)
               end
             end
           end
         end
 
-        mainLinks
+        mainLinks.join("")
       end
 
       def add(user_id, name, url, visible)
