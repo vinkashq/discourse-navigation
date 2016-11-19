@@ -46,11 +46,30 @@ after_initialize do
         raise StandardError.new "menu_links.missing_name" if name.blank?
         raise StandardError.new "menu_links.missing_url" if url.blank?
 
-        record = {id: id, name: name, url: url, visible: visible}
-        remove(user_id, id)
+        menu_links = PluginStore.get(PLUGIN_NAME, STORE_NAME)
+        menu_links = Hash.new if menu_links == nil
+
+        record = menu_links[id]
+        record['name'] = name
+        record['url'] = url
+        record['visible'] = visible
+
+        menu_links[id] = record
+        PluginStore.set(PLUGIN_NAME, STORE_NAME, menu_links)
+
+        record
+      end
+
+      def move(user_id, id, position)
+        ensureAdmin user_id
+
+        raise StandardError.new "menu_links.missing_position" if position.blank?
 
         menu_links = PluginStore.get(PLUGIN_NAME, STORE_NAME)
         menu_links = Hash.new if menu_links == nil
+
+        record = menu_links[id]
+        record['position'] = position
 
         menu_links[id] = record
         PluginStore.set(PLUGIN_NAME, STORE_NAME, menu_links)
@@ -125,19 +144,29 @@ after_initialize do
     end
 
     def update
-      field_params = params.require(:menu_link)
       id = params.require(:id)
-      name   = field_params[:name]
-      url = field_params[:url]
-      hamburger = {general: field_params[:hamburger_general], footer: field_params[:hamburger_footer]}
-      visible = {hamburger: hamburger}
-      user_id  = current_user.id
+      position = params[:position]
+      if position.nil?
+        field_params = params.require(:menu_link)
+        name   = field_params[:name]
+        url = field_params[:url]
+        hamburger = {general: field_params[:hamburger_general], footer: field_params[:hamburger_footer]}
+        visible = {hamburger: hamburger}
+        user_id  = current_user.id
 
-      begin
-        record = Navigation::MenuLink.edit(user_id, id, name, url, visible)
-        render json: record
-      rescue StandardError => e
-        render_json_error e.message
+        begin
+          record = Navigation::MenuLink.edit(user_id, id, name, url, visible)
+          render json: record
+        rescue StandardError => e
+          render_json_error e.message
+        end
+      else
+        begin
+          record = Navigation::MenuLink.move(user_id, id, position)
+          render json: record
+        rescue StandardError => e
+          render_json_error e.message
+        end
       end
     end
 
