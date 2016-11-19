@@ -45,7 +45,7 @@ export default Ember.Controller.extend({
 
       // Only confirm if we already been saved
       if (f.get('id')) {
-        bootbox.confirm(I18n.t("admin.user_fields.delete_confirm"), function(result) {
+        bootbox.confirm(I18n.t("admin.menu_links.delete_confirm"), function(result) {
           if (result) {
             f.destroyRecord().then(function() {
               model.removeObject(f);
