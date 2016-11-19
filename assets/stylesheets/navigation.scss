@@ -17,3 +17,12 @@
     float: right;
     text-align: right;
 }
+.menu-links .menu-link .form-element.label-area {
+    width: 25%;
+}
+.menu-links .menu-link .form-element.input-area {
+    width: 75%;
+}
+.menu-links .menu-link .form-element.input-area input[type=text] {
+    width: 50%;
+}

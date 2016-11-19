@@ -4,7 +4,7 @@
 # authors: Vinoth Kannan (vinothkannan@vinkas.com)
 # url: https://github.com/vinkas0/discourse-navigation
 
-register_asset 'stylesheets/navigation.scss'
+register_asset 'stylesheets/navigation.scss', :admin
 
 add_admin_route 'admin.navigation.title', 'navigation'
 

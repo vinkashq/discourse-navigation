@@ -12,3 +12,6 @@ en:
         cancel: "Cancel"
         edit: "Edit"
         delete: "Delete"
+        hamburger:
+          general: "General Links"
+          footer: "Footer Links"
