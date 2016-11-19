@@ -24,21 +24,18 @@ export default Ember.Component.extend(bufferedProperty('menuLink'), {
       }
     }
 
-    return ret.join(', ');
+    return ret.join(' &bullet; ');
   }.property('menuLink.visible.main', 'menuLink.visible.hamburger_general', 'menuLink.visible.hamburger_footer'),
 
   actions: {
     save() {
       const self = this;
       const buffered = this.get('buffered');
-      var attrs = buffered.getProperties('name',
-                                         'url');
-
-      var visible = buffered.getProperties('main',
-                                           'hamburger_general',
-                                           'hamburger_footer');
-
-      attrs['visible'] = visible;
+      const attrs = buffered.getProperties('name',
+                                         'url',
+                                         'visible.main',
+                                         'visible.hamburger_general',
+                                         'visible.hamburger_footer');
 
       this.get('menuLink').save(attrs).then(function() {
         self.set('editing', false);
