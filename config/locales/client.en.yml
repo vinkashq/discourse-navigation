@@ -23,7 +23,7 @@ en:
             footer: "Hamburger footer"
           branding:
             general: "Branding general"
-            social: "Branding social"
+            icon: "Branding icon"
         main:
           menu: "Main menu"
         hamburger:
@@ -33,4 +33,4 @@ en:
         branding:
           menu: "Branding menu"
           general: "General Links"
-          social: "Social Icons"
+          icon: "Icon Links"

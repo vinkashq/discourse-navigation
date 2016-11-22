@@ -61,7 +61,7 @@ after_initialize do
                   visible_hamburger_general: visible['hamburger_general'],
                   visible_hamburger_footer: visible['hamburger_footer'],
                   visible_brand_general: visible['brand_general'],
-                  visible_brand_social: visible['brand_social']}
+                  visible_brand_icon: visible['brand_icon']}
 
         menu_links_array = Array.new
         menu_links.each do |id, value|
@@ -92,7 +92,7 @@ after_initialize do
         record['visible_hamburger_general'] = visible['hamburger_general']
         record['visible_hamburger_footer'] = visible['hamburger_footer']
         record['visible_brand_general'] = visible['brand_general']
-        record['visible_brand_social'] = visible['brand_social']
+        record['visible_brand_icon'] = visible['brand_icon']
 
         menu_links[id] = record
         PluginStore.set(PLUGIN_NAME, STORE_NAME, menu_links)
@@ -165,7 +165,7 @@ after_initialize do
       visible['hamburger_general'] = field_params[:visible_hamburger_general]
       visible['hamburger_footer'] = field_params[:visible_hamburger_footer]
       visible['brand_general'] = field_params[:visible_brand_general]
-      visible['brand_social'] = field_params[:visible_brand_social]
+      visible['brand_icon'] = field_params[:visible_brand_icon]
       user_id   = current_user.id
 
       begin
@@ -202,7 +202,7 @@ after_initialize do
         visible['hamburger_general'] = field_params[:visible_hamburger_general]
         visible['hamburger_footer'] = field_params[:visible_hamburger_footer]
         visible['brand_general'] = field_params[:visible_brand_general]
-        visible['brand_social'] = field_params[:visible_brand_social]
+        visible['brand_icon'] = field_params[:visible_brand_icon]
 
         begin
           record = Navigation::MenuLink.edit(user_id, id, name, url, visible)
