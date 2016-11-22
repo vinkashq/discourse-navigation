@@ -21,6 +21,12 @@ export default Ember.Component.extend(bufferedProperty('menuLink'), {
     if (this.get('menuLink.visible_hamburger_footer')) {
       ret.push(I18n.t('admin.menu_links.enabled.hamburger.footer'));
     }
+    if (this.get('menuLink.visible_brand_general')) {
+      ret.push(I18n.t('admin.menu_links.enabled.branding.general'));
+    }
+    if (this.get('menuLink.visible_brand_social')) {
+      ret.push(I18n.t('admin.menu_links.enabled.branding.social'));
+    }
 
     return ret.join(', ');
   }.property('menuLink.visible_main', 'menuLink.visible_hamburger_general', 'menuLink.visible_hamburger_footer', 'menuLink.visible_brand_general', 'menuLink.visible_brand_social'),
