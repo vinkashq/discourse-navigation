@@ -158,7 +158,7 @@ after_initialize do
       field_params = params.require(:menu_link)
       name   = field_params[:name]
       url = field_params[:url]
-      visible = Array.new
+      visible = Hash.new
       visible['main'] = field_params[:visible_main]
       visible['hamburger_general'] = field_params[:visible_hamburger_general]
       visible['hamburger_footer'] = field_params[:visible_hamburger_footer]
@@ -195,7 +195,7 @@ after_initialize do
       if position.nil?
         name   = field_params[:name]
         url = field_params[:url]
-        visible = Array.new
+        visible = Hash.new
         visible['main'] = field_params[:visible_main]
         visible['hamburger_general'] = field_params[:visible_hamburger_general]
         visible['hamburger_footer'] = field_params[:visible_hamburger_footer]
