@@ -31,6 +31,24 @@
     {{/admin-form-row}}
   {{/admin-form-row}}
 
+  {{#admin-form-row label="admin.menu_links.branding.menu"}}
+    <div class="row">
+      <a href="https://github.com/vinkas0/discourse-branding">{{i18n 'admin.navigation.plugin.branding'}}</a>
+    </div>
+    <div class="row">
+      <div class="form-element input-area">
+        {{input type="checkbox" checked=buffered.visible_brand_general}} {{i18n 'admin.menu_links.branding.general'}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-element input-area">
+        {{input type="checkbox" checked=buffered.visible_brand_social}} {{i18n 'admin.menu_links.branding.social'}}
+      </div>
+    </div>
+  {{/admin-form-row}}
+{{/admin-form-row}}
+
   {{#admin-form-row}}
     {{d-button action="save" class="btn-primary" icon="check" label="admin.menu_links.save"}}
     {{d-button action="cancel" class="btn-danger" icon="times" label="admin.menu_links.cancel"}}

@@ -3,6 +3,8 @@ en:
     admin:
       navigation:
         title: "Navigation"
+        plugin:
+          branding: "Branding"
       menu_links:
         title: "Menu Links"
         new: "New Menu Link"
@@ -19,9 +21,16 @@ en:
           hamburger:
             general: "Hamburger general"
             footer: "Hamburger footer"
+          branding:
+            general: "Branding general"
+            social: "Branding social"
         main:
           menu: "Main menu"
         hamburger:
           menu: "Hamburger menu"
           general: "General Links"
           footer: "Footer Links"
+        branding:
+          menu: "Branding menu"
+          general: "General Links"
+          social: "Social Icons"
