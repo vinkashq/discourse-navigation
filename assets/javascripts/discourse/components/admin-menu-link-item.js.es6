@@ -24,24 +24,25 @@ export default Ember.Component.extend(bufferedProperty('menuLink'), {
     if (this.get('menuLink.visible_brand_general')) {
       ret.push(I18n.t('admin.menu_links.enabled.branding.general'));
     }
-    if (this.get('menuLink.visible_brand_social')) {
-      ret.push(I18n.t('admin.menu_links.enabled.branding.social'));
+    if (this.get('menuLink.visible_brand_icon')) {
+      ret.push(I18n.t('admin.menu_links.enabled.branding.icon'));
     }
 
     return ret.join(', ');
-  }.property('menuLink.visible_main', 'menuLink.visible_hamburger_general', 'menuLink.visible_hamburger_footer', 'menuLink.visible_brand_general', 'menuLink.visible_brand_social'),
+  }.property('menuLink.visible_main', 'menuLink.visible_hamburger_general', 'menuLink.visible_hamburger_footer', 'menuLink.visible_brand_general', 'menuLink.visible_brand_icon'),
 
   actions: {
     save() {
       const self = this;
       const buffered = this.get('buffered');
       const attrs = buffered.getProperties('name',
+                                           'icon',
                                            'url',
                                            'visible_main',
                                            'visible_hamburger_general',
                                            'visible_hamburger_footer',
                                            'visible_brand_general',
-                                           'visible_brand_social');
+                                           'visible_brand_icon');
 
       this.get('menuLink').save(attrs).then(function() {
         self.set('editing', false);
