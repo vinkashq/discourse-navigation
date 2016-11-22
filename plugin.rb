@@ -43,7 +43,7 @@ after_initialize do
         mainLinks.join("")
       end
 
-      def add(user_id, name, url, visible)
+      def add(user_id, name, icon, url, visible)
         ensureAdmin user_id
 
         # TODO add i18n string
@@ -56,6 +56,7 @@ after_initialize do
         id = SecureRandom.hex(16)
         record = {id: id,
                   name: name,
+                  icon: icon,
                   url: url,
                   visible_main: visible['main'],
                   visible_hamburger_general: visible['hamburger_general'],
@@ -76,7 +77,7 @@ after_initialize do
         record
       end
 
-      def edit(user_id, id, name, url, visible)
+      def edit(user_id, id, name, icon, url, visible)
         ensureAdmin user_id
 
         raise StandardError.new "menu_links.missing_name" if name.blank?
@@ -87,6 +88,7 @@ after_initialize do
 
         record = menu_links[id]
         record['name'] = name
+        record['icon'] = icon
         record['url'] = url
         record['visible_main'] = visible['main']
         record['visible_hamburger_general'] = visible['hamburger_general']
@@ -159,6 +161,7 @@ after_initialize do
     def create
       field_params = params.require(:menu_link)
       name   = field_params[:name]
+      icon = field_params[:icon]
       url = field_params[:url]
       visible = Hash.new
       visible['main'] = field_params[:visible_main]
@@ -169,7 +172,7 @@ after_initialize do
       user_id   = current_user.id
 
       begin
-        record = Navigation::MenuLink.add(user_id, name, url, visible)
+        record = Navigation::MenuLink.add(user_id, name, icon, url, visible)
         render json: record
       rescue StandardError => e
         render_json_error e.message
@@ -192,10 +195,11 @@ after_initialize do
       id = params.require(:id)
       field_params = params.require(:menu_link)
       position = field_params[:position]
-      user_id  = current_user.id
+      user_id = current_user.id
 
       if position.nil?
-        name   = field_params[:name]
+        name = field_params[:name]
+        icon = field_params[:icon]
         url = field_params[:url]
         visible = Hash.new
         visible['main'] = field_params[:visible_main]
@@ -205,7 +209,7 @@ after_initialize do
         visible['brand_icon'] = field_params[:visible_brand_icon]
 
         begin
-          record = Navigation::MenuLink.edit(user_id, id, name, url, visible)
+          record = Navigation::MenuLink.edit(user_id, id, name, icon, url, visible)
           render json: record
         rescue StandardError => e
           render_json_error e.message

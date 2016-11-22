@@ -9,6 +9,7 @@ en:
         title: "Menu Links"
         new: "New Menu Link"
         name: "Name"
+        icon: "Icon"
         url: "Url"
         save: "Save"
         cancel: "Cancel"

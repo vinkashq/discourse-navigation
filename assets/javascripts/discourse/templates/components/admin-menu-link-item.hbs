@@ -3,6 +3,10 @@
     {{input value=buffered.name class="menu-link-name"}}
   {{/admin-form-row}}
 
+  {{#admin-form-row label="admin.menu_links.icon"}}
+    {{input value=buffered.icon class="menu-link-icon"}}
+  {{/admin-form-row}}
+
   {{#admin-form-row label="admin.menu_links.url"}}
     {{input value=buffered.url class="menu-link-url"}}
   {{/admin-form-row}}
@@ -33,7 +37,7 @@
     {{#admin-form-row label="admin.menu_links.branding.menu"}}
       <div class="row">
         <div class="form-element input-area">
-          required plugin: <a target="_blank" href="https://github.com/vinkas0/discourse-branding">{{i18n 'admin.navigation.plugin.branding'}}</a>
+          for <a target="_blank" href="https://github.com/vinkas0/discourse-branding">{{i18n 'admin.navigation.plugin.branding'}}</a> plugin
         </div>
       </div>
 

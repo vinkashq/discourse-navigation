@@ -36,6 +36,7 @@ export default Ember.Component.extend(bufferedProperty('menuLink'), {
       const self = this;
       const buffered = this.get('buffered');
       const attrs = buffered.getProperties('name',
+                                           'icon',
                                            'url',
                                            'visible_main',
                                            'visible_hamburger_general',
