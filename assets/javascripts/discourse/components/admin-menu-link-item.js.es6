@@ -12,20 +12,24 @@ export default Ember.Component.extend(bufferedProperty('menuLink'), {
 
   flags: function() {
     const ret = [];
-    if (this.get('menuLink.visible')) {
-      if (this.get('menuLink.visible_main')) {
-        ret.push(I18n.t('admin.menu_links.enabled.main'));
-      }
-      if (this.get('menuLink.visible_hamburger_general')) {
-        ret.push(I18n.t('admin.menu_links.enabled.hamburger.general'));
-      }
-      if (this.get('menuLink.visible_hamburger_footer')) {
-        ret.push(I18n.t('admin.menu_links.enabled.hamburger.footer'));
-      }
+    if (this.get('menuLink.visible_main')) {
+      ret.push(I18n.t('admin.menu_links.enabled.main'));
+    }
+    if (this.get('menuLink.visible_hamburger_general')) {
+      ret.push(I18n.t('admin.menu_links.enabled.hamburger.general'));
+    }
+    if (this.get('menuLink.visible_hamburger_footer')) {
+      ret.push(I18n.t('admin.menu_links.enabled.hamburger.footer'));
+    }
+    if (this.get('menuLink.visible_brand_general')) {
+      ret.push(I18n.t('admin.menu_links.enabled.branding.general'));
+    }
+    if (this.get('menuLink.visible_brand_social')) {
+      ret.push(I18n.t('admin.menu_links.enabled.branding.social'));
     }
 
     return ret.join(', ');
-  }.property('menuLink.visible_main', 'menuLink.visible_hamburger_general', 'menuLink.visible_hamburger_footer'),
+  }.property('menuLink.visible_main', 'menuLink.visible_hamburger_general', 'menuLink.visible_hamburger_footer', 'menuLink.visible_brand_general', 'menuLink.visible_brand_social'),
 
   actions: {
     save() {
@@ -35,7 +39,9 @@ export default Ember.Component.extend(bufferedProperty('menuLink'), {
                                            'url',
                                            'visible_main',
                                            'visible_hamburger_general',
-                                           'visible_hamburger_footer');
+                                           'visible_hamburger_footer',
+                                           'visible_brand_general',
+                                           'visible_brand_social');
 
       this.get('menuLink').save(attrs).then(function() {
         self.set('editing', false);
