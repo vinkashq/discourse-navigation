@@ -34,7 +34,7 @@ after_initialize do
         result.each do |id, value|
           unless value['visible_main'].nil?
             if value['visible_main'].eql? "true"
-              link = ['<li><a href="', value['url'], '">', value['name'], "</a></li>"].join("")
+              link = ['<a href="', value['url'], '">', value['name'], "</a>"].join("")
               mainLinks.push(link)
             end
           end
