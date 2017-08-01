@@ -1,0 +1,37 @@
+en:
+  admin_js:
+    admin:
+      navigation:
+        title: "التصفح"
+        plugin:
+          branding: "العلامة المميزة"
+      menu_links:
+        title: "قائمة الوصلات"
+        new: "وصلة قائمة جديد"
+        name: "الاسم"
+        icon: "أيقونة"
+        url: "مسار"
+        save: "احفظ"
+        cancel: "ألغي"
+        edit: "عدّل"
+        delete: "إحذف"
+        delete_confirm: "هل أنت متأكد من رغبتك من حذف تلك وصلة القائمة ؟ "
+        visible: "مرئي"
+        enabled:
+          main: "رئيسي"
+          hamburger:
+            general: "هامبرجر عام"
+            footer: "هامبرجر مذيل"
+          branding:
+            general: "علامة مميزة عامة"
+            icon: "أيقونة العلامة المميزة"
+        main:
+          menu: "القائمة الرئيسة"
+        hamburger:
+          menu: "قائمة الهامبرجر"
+          general: "وصلة عامة"
+          footer: "وصلة مذيلة"
+        branding:
+          menu: "قائمة العلامة المميزة"
+          general: "وصلات عامة"
+          icon: "أيقونة الوصلات"
